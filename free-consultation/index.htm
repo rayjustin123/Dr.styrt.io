@@ -152,7 +152,7 @@ form.formular {
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link href="../themes/SO/css/atf.css" rel="stylesheet">
 <link src="themes/SO/css/atf.css" rel="stylesheet">
 <link src="themes/SO/plugins/_font-awesome.min.less" rel="stylesheet">
@@ -738,9 +738,8 @@ function disableBtn(){
                     </div>
                 </div>
                 <div class="map col-sm-7" id="map_location">
-            <iframe title="maps" width="1000" height="600" style="border:0" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDP0hlzhLz00tdZYSKVnDoKlP4aVoDFasM&q=Dr.+Paul+J.+Styrt,+Orthodontics, San+Diego, CA">
-</iframe> 
-</div>
+            <!-- <iframe title="maps" width="1000" height="600" style="border:0" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDP0hlzhLz00tdZYSKVnDoKlP4aVoDFasM&q=Dr.+Paul+J.+Styrt,+Orthodontics, San+Diego, CA"></iframe>  -->
+           </div>
             </div>
         </section></div>
 <div id="HTMLBlock1015" class="HTMLBlock">
@@ -846,223 +845,10 @@ window.setTimeout(loadDeferredStyles, 0);
 else
 window.addEventListener('load', loadDeferredStyles);
 </script>
-
-
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=MAP_KEY"></script>
-
 <script type="text/javascript" src="../themes/SO/js/jquery-1.7.2.min.js"></script>
 
 <script src="../themes/SO/js/plugins.js"></script>
 
-<script>
-    $(document).ready(function () {
-      function init_map() {
-        var locations = [
-          [32.876010, -117.213065],
-        ];
-        var map = new google.maps.Map(document.getElementById('location_map'),
-          {
-            zoom: 15,
-            gestureHandling: 'none',
-            zoomControl: false,
-            scrollwheel: false,
-            center: new google.maps.LatLng(32.876010, -117.213065),
-            styles: [
-              {
-                "elementType": "geometry",
-                "stylers": [
-                  {
-                    "color": "#f5f5f5"
-                  }]
-              },
-              {
-                "elementType": "labels.icon",
-                "stylers": [
-                  {
-                    "visibility": "off"
-                  }]
-              },
-              {
-                "elementType": "labels.text.fill",
-                "stylers": [
-                  {
-                    "color": "#616161"
-                  }]
-              },
-              {
-                "elementType": "labels.text.stroke",
-                "stylers": [
-                  {
-                    "color": "#f5f5f5"
-                  }]
-              },
-              {
-                "featureType": "administrative.land_parcel",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                  {
-                    "color": "#bdbdbd"
-                  }]
-              },
-              {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [
-                  {
-                    "color": "#eeeeee"
-                  }]
-              },
-              {
-                "featureType": "poi",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                  {
-                    "color": "#757575"
-                  }]
-              },
-              {
-                "featureType": "poi.park",
-                "elementType": "geometry",
-                "stylers": [
-                  {
-                    "color": "#e5e5e5"
-                  }]
-              },
-              {
-                "featureType": "poi.park",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                  {
-                    "color": "#9e9e9e"
-                  }]
-              },
-              {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [
-                  {
-                    "color": "#ffffff"
-                  }]
-              },
-              {
-                "featureType": "road.arterial",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                  {
-                    "color": "#757575"
-                  }]
-              },
-              {
-                "featureType": "road.highway",
-                "elementType": "geometry",
-                "stylers": [
-                  {
-                    "color": "#dadada"
-                  }]
-              },
-              {
-                "featureType": "road.highway",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                  {
-                    "color": "#616161"
-                  }]
-              },
-              {
-                "featureType": "road.local",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                  {
-                    "color": "#9e9e9e"
-                  }]
-              },
-              {
-                "featureType": "transit.line",
-                "elementType": "geometry",
-                "stylers": [
-                  {
-                    "color": "#e5e5e5"
-                  }]
-              },
-              {
-                "featureType": "transit.station",
-                "elementType": "geometry",
-                "stylers": [
-                  {
-                    "color": "#eeeeee"
-                  }]
-              },
-              {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [
-                  {
-                    "color": "#c9c9c9"
-                  }]
-              },
-              {
-                "featureType": "water",
-                "elementType": "labels.text.fill",
-                "stylers": [
-                  {
-                    "color": "#9e9e9e"
-                  }]
-              }],
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          });
-        var marker, i;
-        for (i = 0; i < locations.length; i++) {
-          marker = new google.maps.Marker(
-            {
-              position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-              icon: "/themes/SO/images/pointer.png",
-              map: map
-            });
-        };
-        if ($(window).width() < 767) {
-          map.panBy(0, 0);
-        }
-        else {
-          map.panBy(0, 0);
-        }
-      };
-
-      // Lazy Load for map Start
-      $.fn.isInViewport = function () {
-        var elementTop = $(this).offset().top;
-        var elementBottom = elementTop + $(this).outerHeight();
-
-        var viewportTop = $(window).scrollTop();
-        var viewportBottom = viewportTop + $(window).height();
-
-        return elementBottom > viewportTop && elementTop < viewportBottom;
-      };
-      var map_load = false;
-      $(window).on('resize scroll', function (e) {
-        if ($('#location_map').isInViewport()) {
-          $(window).unbind('resize');
-
-          if (!map_load) {
-            init_map();
-          }
-          map_load = true;
-        }
-      });
-      // Lazy Load for map End
-
-      $(document).ready(function () {
-        $('.panel-collapse').on('show.bs.collapse', function () {
-          $(this).siblings('.panel-heading').addClass('active');
-        });
-
-        $('.panel-collapse').on('hide.bs.collapse', function () {
-          $(this).siblings('.panel-heading').removeClass('active');
-        });
-      });
-
-
-    });
-  </script>
 
 <script type="text/javascript" async="" defer="" src="https://app.smilesnap.com/app/QeehJBozXPfPzwrYKNXRXBc1/loader.js"></script>
 <style type="text/css">
@@ -1103,5 +889,25 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 </body>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var latitude = 32.876010;
+    var longitude = -117.213065;
 
+    // Initialize Leaflet map
+    var map = L.map("map_location").setView([latitude, longitude], 15);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    // Add a marker with a popup
+    L.marker([latitude, longitude])
+      .addTo(map)
+      .bindPopup("Dr. Paul J. Styrt, Specialists in Orthodontics & Pediatric Dentistry")
+      .openPopup();
+  });
+</script>
 <script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpbh-mt'},{'server':'p3plmcpnl485214'},{'dcenter':'p3'},{'cp_id':'7501261'},{'cp_cache':''},{'cp_cl':'6'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='../wrhs/5c3e20ad749ddb088afc84b1b7ff009e/tccl.min.js'></script></html><!-- Footer -->
